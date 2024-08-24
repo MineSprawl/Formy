@@ -1,4 +1,6 @@
 plugins {
+    id("com.gradleup.shadow") version "8.3.0"
+    id("xyz.jpenilla.run-paper") version "2.3.1"
     id("java")
 }
 
@@ -18,6 +20,18 @@ repositories {
 dependencies {
     compileOnly("io.papermc.paper:paper-api:1.19.4-R0.1-SNAPSHOT")
     implementation(project(":api"))
+}
+
+tasks {
+    assemble {
+        dependsOn("shadowJar")
+    }
+}
+
+tasks {
+    runServer {
+        minecraftVersion("1.21.1")
+    }
 }
 
 val targetJavaVersion = 17
