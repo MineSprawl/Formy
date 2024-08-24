@@ -1,4 +1,7 @@
+import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
+
 plugins {
+    id("com.gradleup.shadow") version "8.3.0"
     id("java")
 }
 
@@ -10,10 +13,15 @@ repositories {
 }
 
 dependencies {
-    testImplementation(platform("org.junit:junit-bom:5.10.0"))
-    testImplementation("org.junit.jupiter:junit-jupiter")
+    implementation(files("libs/cumulus.jar"))
 }
 
-tasks.test {
-    useJUnitPlatform()
+tasks {
+    assemble {
+        dependsOn("shadowJar")
+    }
+}
+
+tasks.named<ShadowJar>("shadowJar") {
+    relocate("org.geysermc.cumulus", "net.minesprawl.formy.cumulus")
 }
