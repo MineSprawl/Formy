@@ -6,3 +6,7 @@ prefix: Formy
 authors: [ CDX ]
 description: A plugin that provides an API for creating Bedrock forms on java server running Floodgate through a Java API or Skript.
 website: https://formy.minesprawl.net
+softdepend:
+  - GeyserMC
+  - Floodgate
+  - Skript

@@ -1,0 +1,4 @@
+# Enable this if you're using this plugin on a backend server without having Floodgate installed
+# This setting is primarily intended for Minehut servers, if you're not using Minehut, you should
+# install Floodgate on your backend server instead.
+send-raw-forms: false
